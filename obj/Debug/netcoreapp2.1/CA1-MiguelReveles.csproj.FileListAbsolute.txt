@@ -1,0 +1,11 @@
+C:\Users\revel\Documents\Fall 2018\4360( obj anylysis and design)\PA1-MiguelReveles\bin\Debug\netcoreapp2.1\CA1-MiguelReveles.deps.json
+C:\Users\revel\Documents\Fall 2018\4360( obj anylysis and design)\PA1-MiguelReveles\bin\Debug\netcoreapp2.1\CA1-MiguelReveles.runtimeconfig.json
+C:\Users\revel\Documents\Fall 2018\4360( obj anylysis and design)\PA1-MiguelReveles\bin\Debug\netcoreapp2.1\CA1-MiguelReveles.runtimeconfig.dev.json
+C:\Users\revel\Documents\Fall 2018\4360( obj anylysis and design)\PA1-MiguelReveles\bin\Debug\netcoreapp2.1\CA1-MiguelReveles.dll
+C:\Users\revel\Documents\Fall 2018\4360( obj anylysis and design)\PA1-MiguelReveles\bin\Debug\netcoreapp2.1\CA1-MiguelReveles.pdb
+C:\Users\revel\Documents\Fall 2018\4360( obj anylysis and design)\PA1-MiguelReveles\obj\Debug\netcoreapp2.1\CA1-MiguelReveles.csprojAssemblyReference.cache
+C:\Users\revel\Documents\Fall 2018\4360( obj anylysis and design)\PA1-MiguelReveles\obj\Debug\netcoreapp2.1\CA1-MiguelReveles.csproj.CoreCompileInputs.cache
+C:\Users\revel\Documents\Fall 2018\4360( obj anylysis and design)\PA1-MiguelReveles\obj\Debug\netcoreapp2.1\CA1-MiguelReveles.AssemblyInfoInputs.cache
+C:\Users\revel\Documents\Fall 2018\4360( obj anylysis and design)\PA1-MiguelReveles\obj\Debug\netcoreapp2.1\CA1-MiguelReveles.AssemblyInfo.cs
+C:\Users\revel\Documents\Fall 2018\4360( obj anylysis and design)\PA1-MiguelReveles\obj\Debug\netcoreapp2.1\CA1-MiguelReveles.dll
+C:\Users\revel\Documents\Fall 2018\4360( obj anylysis and design)\PA1-MiguelReveles\obj\Debug\netcoreapp2.1\CA1-MiguelReveles.pdb
