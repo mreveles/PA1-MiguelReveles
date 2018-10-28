@@ -21,7 +21,7 @@ public class Student
 
     }
 
-    public void updateStdInfo()
+    public virtual void updateStdInfo()
     {
 
     }
@@ -58,7 +58,7 @@ public class GradStudent : Student
     {
 
     }
-    public void updateStdInfo()
+    public override void updateStdInfo()
     {
 
     }
@@ -75,24 +75,34 @@ public class GradStudent : Student
 //Start of SubClass Under Grad Student
 public class UnderGradStudent : Student
 {
-    enum Classifaction {Freshman, Sophmore, Junior, Senior};
-    string previousHSchool;
-    Classifaction stdClass;
-    public UnderGradStudent(string stdName, string DOB, long ID, string Mjr, float GPA, string pvsHschool, string stdClass) : base(stdName, DOB, ID, Mjr, GPA)
+    public enum Classifaction
     {
+        Freshman = 1, 
+        Sophmore = 2, 
+        Junior = 3, 
+        Senior=4
+    }
+    string previousHSchool;
+    int stdClass;
+    public UnderGradStudent(string stdName, string DOB, long ID, string Mjr, float GPA, string pvsHschool, int stdClass) : base(stdName, DOB, ID, Mjr, GPA)
+    {
+        this.previousHSchool = pvsHschool;
+        this.stdClass = stdClass;
         
     }
     //Sub-Class functions
-    public void addStudentInfo()
+    public override void addStudentInfo()
     {
 
     }
-    public void updateStdInfo()
+    public override void updateStdInfo()
     {
 
     }
-    public void displayStdInfo()
+    public override void displayStdInfo()
     {
+        base.displayStdInfo();
+        Console.Write("{0,-10} {1,-10}", previousHSchool, Enum.GetName(typeof(Classifaction),stdClass));
 
     }
 }

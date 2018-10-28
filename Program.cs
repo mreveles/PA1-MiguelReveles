@@ -4,18 +4,50 @@ using System.IO;
 
 namespace CA1_MiguelReveles
 {
+    public enum Classifaction {Freshman, Sophmore, Junior, Senior};
+
     public class Program
     {
         static void Main(string[] args)
         {
-            
             //Declaring new Grad Student List and Under Grad Student list
             List<GradStudent> gradList = new List<GradStudent>();
             List<UnderGradStudent> undergradList = new List<UnderGradStudent>();
+
+            //extracts data from txt files
+             string[] gradStudentsText = System.IO.File.ReadAllLines(@"GradSTudents.txt");
+             string[] undergradStudentsText = System.IO.File.ReadAllLines(@"UnderGradSTudents.txt");
+
+            //inputs data from string array into list
+            foreach(string gradData in gradStudentsText)
+            {
+                string[] gradDATA = gradData.Split(',');
+                var newgraddata = new GradStudent(gradDATA[0],gradDATA[1],long.Parse(gradDATA[2]),gradDATA[3],float.Parse(gradDATA[4]),gradDATA[5],gradDATA[6],gradDATA[7],float.Parse(gradDATA[8]));
+                gradList.Add(newgraddata);
+            }
+            foreach(string ugdata in undergradStudentsText)
+            {
+                string[] udDATA = ugdata.Split(',');
+                var newUnderudDATA = new UnderGradStudent(udDATA[0],udDATA[1],long.Parse(udDATA[2]),udDATA[3],float.Parse(udDATA[4]),udDATA[5],int.Parse(udDATA[6]));
+            }
+            
+            
             //declaring variables
             bool continuar = true;
             string compResponse;
+            string TstdName;
+            string TDOB;
+            long TID = 0;
+            string TMjr;
+            float TGPA;
+            string TprvDegree;
+            string TprvUniversity;
+            string TundrgdMjr;
+            float TundergdGPA;
+            string TpvsHschool;
+            float TstdClass;
 
+            //start menue
             while (continuar)
             {
                 Console.WriteLine("Select a Task (Please Enter A Number)");
@@ -24,18 +56,10 @@ namespace CA1_MiguelReveles
                 var response = Console.ReadLine();
                 switch (response)
                 {
+                    //enter grad student
                     case "1":
                         compResponse = "Add Grad Student";
-                        string TstdName;
-                        string TDOB;
-                        long TID = 0;
-                        string TMjr;
-                        float TGPA;
-                        string TprvDegree;
-                        string TprvUniversity;
-                        string TundrgdMjr;
-                        float TundergdGPA;
-
+                        Console.WriteLine("\tYou entered {0}", compResponse);
                         Console.WriteLine("Enter Student Name:");
                         TstdName = Console.ReadLine();
                         Console.WriteLine("Date of Birth:");
@@ -60,10 +84,30 @@ namespace CA1_MiguelReveles
                         gradList.Add(new GradStudent(TstdName, TDOB, TID, TMjr, TGPA, TprvDegree, TprvUniversity, TundrgdMjr, TundergdGPA));
                         Console.WriteLine("You entered {0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}", TstdName, TDOB, TID, TMjr, TGPA, TprvDegree, TprvUniversity, TundrgdMjr, TundergdGPA);
                         break;
+                    //enter under grad student
                     case "2":
                         compResponse = "Add Under-Grad Student";
-                        Console.WriteLine("You entered {0}.", compResponse);
-                        break;
+                        Console.WriteLine("\tYou entered {0}", compResponse);
+                        Console.WriteLine("Enter Student Name:");
+                        TstdName = Console.ReadLine();
+                        Console.WriteLine("Date of Birth:");
+                        TDOB = Console.ReadLine();
+                        Console.WriteLine("ID");
+                        respuesta = Console.ReadLine();
+                        TID = testlong(respuesta);
+                        Console.WriteLine("Major:");
+                        TMjr = Console.ReadLine();
+                        Console.WriteLine("Undergraduate GPA:");
+                        respuesta = Console.ReadLine();
+                        TGPA = testfloat(respuesta);
+                        Console.WriteLine("Previous HighSchool:");
+                        TpvsHschool = Console.ReadLine();
+                        Console.WriteLine("Student Class: 1. Freshman, 2. Sophmore, 3. Junior, 4. Senior");
+                        respuesta = Console.ReadLine();
+                        TstdClass = (int)testfloat(respuesta);
+                        undergradList.Add(new UnderGradStudent(TstdName, TDOB, TID, TMjr, TGPA, TpvsHschool, (int)TstdClass));
+                        Console.WriteLine("You entered {0}, {1}, {2}, {3}, {4}, {5}, {6}", TstdName, TDOB, TID, TMjr, TGPA, TpvsHschool, TstdClass);                        break;
+                    //list grad students
                     case "3":
                         compResponse = "List All Grad Students";
                         foreach (GradStudent stu in gradList)
@@ -72,19 +116,23 @@ namespace CA1_MiguelReveles
                         }
                         Console.WriteLine("You entered {0}.", compResponse);
                         break;
+                    //list under grad students
                     case "4":
                         compResponse = "List All Under Grad Students";
                         Console.WriteLine("You entered {0}.", compResponse);
                         break;
+                    //exits program
                     case "5":
                         continuar = false;
                         break;
+                    //catches erros
                     default:
                         Console.WriteLine("Input is not readable.");
                         break;
                 }
             }
         }
+        //test function to catch errors with long variables
         public static long testlong(string aNum)
         {
             bool check = true;
@@ -105,6 +153,7 @@ namespace CA1_MiguelReveles
             } while (check);
             return acceptable;
         }
+        //test function to catch errors with floats
         public static float testfloat(string aNum)
         {
             bool check = true;
