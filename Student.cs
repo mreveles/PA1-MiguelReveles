@@ -1,6 +1,5 @@
 using System;
 
-//Start of Base Class
 public class Student
 {
     string StudName;
@@ -8,17 +7,16 @@ public class Student
     long StudID;
     string Major;
     float GPA;
-
-    // public Student(string StdName, string DOB, long ID, string Mjr, float GPA)
-    // {
-    //     this.StudName = StdName;
-    //     this.DateOfBirth = DOB;
-    //     this.StudID = ID;
-    //     this.Major = Mjr;
-    //     this.GPA = GPA;
-    // }
+    public Student(string StdName, string DOB, long ID, string Mjr, float GPA)
+    {
+        this.StudName = StdName;
+        this.DateOfBirth = DOB;
+        this.StudID = ID;
+        this.Major = Mjr;
+        this.GPA = GPA;
+    }
     //Base class functions
-    public void addStudentInfo()
+    public virtual void addStudentInfo()
     {
 
     }
@@ -28,9 +26,11 @@ public class Student
 
     }
 
-    public void displayStdInfo()
+    public virtual void displayStdInfo()
     {
-
+        // Console.WriteLine("\n\n{0,-20} {1,-10} {2,-10} {3,-10} {4,-10)","Name","Date of Birth","Student ID","Major","GPA");
+        // Console.WriteLine("{0,-20} {1,-10} {2,-10} {3,-10} {4,-10}","--------------------","--------","----------","------------" ,"-----");
+        Console.WriteLine("{0,-20} {1,-10} {2,-10} {3,-10} {4,-10}", StudName, DateOfBirth, StudID, Major, GPA);
     }
 }
 
@@ -45,10 +45,16 @@ public class GradStudent : Student
     string undergradMajor;
     float underGPA;
 
-    // public void GradStudent(string prvDegree, string prvUniversity, string undrgdMjr, float undrGPA)
+    public GradStudent(string stdName, string DOB, long ID, string Mjr, float GPA, string prvDegree, string prvUniversity, string undrgdMjr, float undrgdGPA) : base(stdName, DOB, ID, Mjr, GPA)
+    {
+        this.previousDegree = prvDegree;
+        this.previousUniversity = prvUniversity;
+        this.undergradMajor = undrgdMjr;
+        this.underGPA = undrgdGPA;
+    }
 
     //subclass functions
-    public void addStudentInfo()
+    public override void addStudentInfo()
     {
 
     }
@@ -56,9 +62,12 @@ public class GradStudent : Student
     {
 
     }
-    public void displayStdInfo()
+    public override void displayStdInfo()
     {
-
+        base.displayStdInfo();
+        // Console.WriteLine("\n\n{0,-20} {1,-10} {2,-10} {3,-10}","Previous Degree","Previous University","Under Grad Major","Under Grad GPA");
+        // Console.WriteLine("{0,-20} {1,-10} {2,-10} {3,-10}","--------------------","------------","----------","------------" );
+        Console.Write("{0,-10} {1,-10} {2,-10} {3,-10}", previousDegree, previousUniversity, undergradMajor, underGPA);
     }
 }
 //End of SubClass GradStudent
@@ -69,7 +78,10 @@ public class UnderGradStudent : Student
     enum Classifaction {Freshman, Sophmore, Junior, Senior};
     string previousHSchool;
     Classifaction stdClass;
-
+    public UnderGradStudent(string stdName, string DOB, long ID, string Mjr, float GPA, string pvsHschool, string stdClass) : base(stdName, DOB, ID, Mjr, GPA)
+    {
+        
+    }
     //Sub-Class functions
     public void addStudentInfo()
     {
