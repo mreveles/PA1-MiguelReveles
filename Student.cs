@@ -103,6 +103,5 @@ public class UnderGradStudent : Student
     {
         base.displayStdInfo();
         Console.Write("{0,-10} {1,-10}", previousHSchool, Enum.GetName(typeof(Classifaction),stdClass));
-
     }
 }

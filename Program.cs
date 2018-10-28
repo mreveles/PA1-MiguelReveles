@@ -4,7 +4,7 @@ using System.IO;
 
 namespace CA1_MiguelReveles
 {
-    public enum Classifaction {Freshman, Sophmore, Junior, Senior};
+    // public enum Classifaction {Freshman, Sophmore, Junior, Senior};
 
     public class Program
     {
@@ -15,22 +15,25 @@ namespace CA1_MiguelReveles
             List<UnderGradStudent> undergradList = new List<UnderGradStudent>();
 
             //extracts data from txt files
-             string[] gradStudentsText = System.IO.File.ReadAllLines(@"GradSTudents.txt");
+             string[] gradStudentsText = System.IO.File.ReadAllLines(@"GradStudents.txt");
              string[] undergradStudentsText = System.IO.File.ReadAllLines(@"UnderGradSTudents.txt");
 
             //inputs data from string array into list
             foreach(string gradData in gradStudentsText)
             {
                 string[] gradDATA = gradData.Split(',');
+                // foreach(string a in gradDATA){
+                //     Console.WriteLine(a);
+                // }
                 var newgraddata = new GradStudent(gradDATA[0],gradDATA[1],long.Parse(gradDATA[2]),gradDATA[3],float.Parse(gradDATA[4]),gradDATA[5],gradDATA[6],gradDATA[7],float.Parse(gradDATA[8]));
                 gradList.Add(newgraddata);
             }
             foreach(string ugdata in undergradStudentsText)
             {
-                string[] udDATA = ugdata.Split(',');
-                var newUnderudDATA = new UnderGradStudent(udDATA[0],udDATA[1],long.Parse(udDATA[2]),udDATA[3],float.Parse(udDATA[4]),udDATA[5],int.Parse(udDATA[6]));
+                string[] ugDATA = ugdata.Split(',');
+                var newUnderudDATA = new UnderGradStudent(ugDATA[0],ugDATA[1],long.Parse(ugDATA[2]),ugDATA[3],float.Parse(ugDATA[4]),ugDATA[5],int.Parse(ugDATA[6]));
+                undergradList.Add(newUnderudDATA);
             }
-            
             
             //declaring variables
             bool continuar = true;
@@ -119,6 +122,10 @@ namespace CA1_MiguelReveles
                     //list under grad students
                     case "4":
                         compResponse = "List All Under Grad Students";
+                        foreach (UnderGradStudent stu in undergradList)
+                        {
+                            stu.displayStdInfo();
+                        }
                         Console.WriteLine("You entered {0}.", compResponse);
                         break;
                     //exits program
